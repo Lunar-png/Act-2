@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppa's Samgyupsal Portal - Login</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+      :root {
+        --primary-color: #2563eb;
+        --primary-hover: #1d4ed8;
+        --dark-text: #0f172a;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+        color: var(--dark-text);
+        background-color: #0f172a;
+      }
+
+      .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('poster 1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -2;
+      }
+
+      .background-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(circle at center, rgba(15, 23, 42, 0.60), rgba(15, 23, 42, 0.88));
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: -1;
+      }
+
+      .auth-card {
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        max-width: 460px;
+        width: 100%;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+        border-radius: 24px !important;
+        overflow: hidden;
+      }
+
+      .form-control-custom {
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid #cbd5e1;
+        font-size: 15px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .form-control-custom:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+      }
+
+      .form-control-custom.is-invalid {
+        border-color: #dc3545;
+      }
+
+      .field-label-below {
+        display: block;
+        color: #64748b;
+        font-size: 13px;
+        margin-top: 6px;
+        margin-left: 4px;
+        font-weight: 500;
+      }
+
+      span.error-msg {
+        color: #dc3545;
+        font-size: 13px;
+        margin-top: 6px;
+        margin-left: 4px;
+        font-weight: 600;
+        display: block;
+      }
+
+      .btn-gradient-primary {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        border: none;
+        color: #ffffff;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .btn-gradient-primary:hover:not(:disabled), 
+      .btn-gradient-primary:focus-visible:not(:disabled) {
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.35);
+      }
+
+      .auth-switch-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+
+      .auth-switch-link:hover,
+      .auth-switch-link:focus-visible {
+        color: var(--primary-hover);
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="background-image" aria-hidden="true"></div>
+    <div class="background-overlay" aria-hidden="true"></div>
+
+    <main class="container min-vh-100 d-flex justify-content-center align-items-center py-5 px-3">
+      <section class="card auth-card p-4 p-sm-5 border-0">
+        
+        <header class="text-center mb-4">
+          <span class="badge background-danger background-opacity-10 text-danger px-3 py-2 rounded-pill fw-bold mb-2">
+            <i class="fa-solid fa-utensils me-1"></i> Oppa's Samgyupsal
+          </span>
+          <h1 class="h2 fw-bold text-dark mb-1">Welcome Back</h1>
+          <p class="text-muted small">Sign in to manage your account</p>
+        </header>
+
+        <form id="loginForm" action="#" method="POST" novalidate>
+          
+          <div class="mb-3">
+            <input type="text" id="loginName" name="username" class="form-control form-control-custom" placeholder="e.g. admin" autocomplete="username">
+            <label for="loginName" class="field-label-below">
+              <i class="fa-regular fa-envelope me-1" aria-hidden="true"></i> Email Address or Username
+            </label>
+          </div>
+
+          <div class="mb-3">
+            <input type="password" id="loginPassword" name="password" class="form-control form-control-custom" placeholder="••••••••" autocomplete="current-password">
+            <label for="loginPassword" class="field-label-below">
+              <i class="fa-solid fa-lock me-1" aria-hidden="true"></i> Password
+            </label>
+          </div>
+
+          <div class="row mb-3 align-items-center">
+            <div class="col-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="loginCheck" checked>
+                <label class="form-check-label text-secondary small" for="loginCheck">Remember me</label>
+              </div>
+            </div>
+            <div class="col-6 text-end">
+              <a href="#forgot-password" class="text-decoration-none small fw-semibold">Forgot password?</a>
+            </div>
+          </div>
+
+          <p id="loginAlert" class="small fw-semibold text-center mb-3 d-none"></p>
+
+          <button type="submit" id="loginSubmitBtn" class="btn btn-gradient-primary btn-lg w-100 py-3 rounded-3 fw-bold mb-3">
+            Sign In <i class="fa-solid fa-arrow-right-to-bracket ms-2" aria-hidden="true"></i>
+          </button>
+        </form>
+
+        <footer class="text-center pt-3 border-top">
+          <p class="text-muted small mb-0">
+            Don't have an account? 
+            <a href="register.html" class="auth-switch-link">Register here</a>
+          </p>
+        </footer>
+
+      </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+    <script>
+      let failedAttempts = 0;
+      const MAX_ATTEMPTS = 5;
+      const STATIC_USERNAME = "admin";
+      const STATIC_PASSWORD = "12345";
+
+      $(document).ready(function () {$('#loginForm').validate({
+          rules: {
+            username: {
+              required: true
+            },
+            password: {
+              required: true
+            }
+          },
+          messages: {
+            username: {
+              required: "Username or email is required."
+            },
+            password: {
+              required: "Password is required."
+            }
+          },
+          errorElement: 'span',
+          errorClass: 'error-msg',
+          highlight: function(element) {
+            $(element).addClass('is-invalid');
+          },
+          unhighlight: function(element) {
+            $(element).removeClass('is-invalid');
+          },
+          submitHandler: function(form) {
+            if (failedAttempts >= MAX_ATTEMPTS) return false;
+
+            const inputUser = $('#loginName').val().trim();
+            const inputPass = $('#loginPassword').val();
+
+            if (inputUser === STATIC_USERNAME && inputPass === STATIC_PASSWORD) {
+              $('#loginAlert')
+                .removeClass('d-none text-danger')
+                .addClass('text-success')
+                .html('<i class="fa-solid fa-circle-check me-1"></i> Login successful! Redirecting...');
+
+              sessionStorage.setItem('isLoggedIn', 'true');
+              sessionStorage.setItem('currentUser', inputUser);
+
+              setTimeout(function () {
+                window.location.href = 'index.html';
+              }, 1200);
+            } else {
+              failedAttempts++;
+              const remaining = MAX_ATTEMPTS - failedAttempts;
+              $('#loginAlert').removeClass('d-none').addClass('text-danger');
+
+              if (failedAttempts >= MAX_ATTEMPTS) {
+                $('#loginAlert').html('<i class="fa-solid fa-circle-xmark me-1"></i> Account Locked! 5 failed attempts reached.');
+                $('#loginName, #loginPassword, #loginSubmitBtn').prop('disabled', true);
+                $('#loginSubmitBtn').text("Sign In Locked");
+              } else {
+                $('#loginAlert').html(`<i class="fa-solid fa-triangle-exclamation me-1"></i> Invalid credentials! <strong>${remaining}</strong> attempt${remaining > 1 ? 's' : ''} left.`);
+                $('#loginPassword').val('').focus();
+              }
+            }
+          }
+        });
+      });
+    </script>
+
+  </body>
+</html>
